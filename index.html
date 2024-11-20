@@ -21,6 +21,9 @@
       .part1-10 {
         width: 90%;
       }
+      .part1-11{
+        width: 80%;
+      }
 
       .display_flex {
         display: flex;
@@ -29,6 +32,7 @@
     </style>
   </head>
   <body>
+    <h1>Fun With Diffusion Models</h1>
     <h1>Part A</h1>
     <div>
       <h2>1.1 Implementing the Forward Process</h2>
@@ -40,7 +44,7 @@
         <i>&epsilon;</i>
       </p>
       <img src="./img/formula-1.png" />
-      <img src="./img/part1-1.png" class="part1-9" />
+      <img src="./img/part1-1.png" class="part1-10" />
     </div>
     <div>
       <h2>1.2 Denoise using guassian blur</h2>
@@ -284,27 +288,35 @@
         <img src="img/out_dis.png" class="part1-5" />
       </div>
       <h2>Part 2: Training a Diffusion Model</h2>
-
+      <p>
+        In this task, we trained a UNet-based diffusion model for iterative
+        image denoising. Instead of predicting the clean image, the model was
+        trained to predict the noise added to the image, enabling more effective
+        denoising. A noise schedule was defined, gradually increasing noise
+        levels at each timestep, and the cumulative effects were used to create
+        progressively noisier images.
+      </p>
       <div>
         <h3>Adding Time Conditioning to UNet</h3>
         <p>
-          In this task, we trained a UNet-based diffusion model for iterative
-          image denoising. Instead of predicting the clean image, the model was
-          trained to predict the noise added to the image, enabling more
-          effective denoising. A noise schedule was defined, gradually
-          increasing noise levels at each timestep, and the cumulative effects
-          were used to create progressively noisier images. A time-conditioned
-          UNet was implemented to predict and remove noise iteratively at each
-          step. This approach allows the generation of realistic images by
-          starting with pure noise and gradually denoising it. The framework was
-          tailored for the MNIST dataset with fewer diffusion steps (300)
-          compared to standard implementations, making the process efficient and
-          suitable for the task.
+          A time-conditioned UNet was implemented to predict and remove noise
+          iteratively at each step. This approach allows the generation of
+          realistic images by starting with pure noise and gradually denoising
+          it. The framework was tailored for the MNIST dataset with fewer
+          diffusion steps (300) compared to standard implementations, making the
+          process efficient and suitable for the task.
         </p>
 
         <img src="img/time_train.png" class="part1-1" />
-        <img src="img/time_1.png" class="part1-1" />
-        <img src="img/time_2.png" class="part1-1" />
+        <div class="display_flex">
+          <div>
+            <img src="img/time_1.png" class="part1-11" />
+          </div>
+          <div>
+            <img src="img/time_2.png" class="part1-11" />
+          </div>
+        </div>
+      </div>
       </div>
     </div>
     <h2>Adding Class-Conditioning to UNet</h2>
@@ -325,5 +337,14 @@
       class-conditioned images effectively while maintaining versatility in
       unconditional image generation.
     </p>
+    <img src="img/class_train.png" class="part1-1" />
+    <div class="display_flex">
+          <div>
+            <img src="img/class_epoch_5.png" class="part1-11" />
+          </div>
+          <div>
+            <img src="img/class_epcoch_20.png" class="part1-11" />
+          </div>
+        </div>
   </body>
 </html>
